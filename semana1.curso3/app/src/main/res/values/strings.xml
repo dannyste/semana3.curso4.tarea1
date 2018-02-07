@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Petagram</string>
+
+    <!-- MainActivity -->
+    <string name="favorite_pets">Mascotas Favoritas</string>
+    <string name="contact">Contacto</string>
+    <string name="about">Acerca De</string>
+    <string name="set_up_account">Configurar Cuenta</string>
+    <string name="receive_notifications">Recibir Notificaciones</string>
+    <!-- Messages -->
+    <string name="registered_successfully">Registrado correctamente.</string>
+
+    <!-- PetProfileFragment -->
+    <string name="pet_name">Lazy</string>
+
+    <!-- ContactActivity -->
+    <string name="name">Nombre</string>
+    <string name="email">Correo electrónico</string>
+    <string name="message">Mensaje</string>
+    <string name="submit">Enviar</string>
+    <!-- Validations -->
+    <string name="required_name">El nombre es requerido.</string>
+    <string name="required_email">El correo electrónico es requerido.</string>
+    <string name="incorrect_email">El correo electrónico es incorrecto.</string>
+    <string name="required_message">El mensaje es requerido.</string>
+    <!-- Messages -->
+    <string name="email_sent">Correo electrónico enviado.</string>
+    <string name="email_failed_send">Correo electrónico no enviado.</string>
+    <string name="authentication_failed">Autenticación fallida.</string>
+    <string name="unexpected_error_occured">Ocurrió un error inesperado.</string>
+
+    <!-- AboutActivity -->
+    <string name="about_name">Danny Ponce</string>
+    <string name="about_email">coursera.danny@gmail.com</string>
+
+    <!-- SetUpActivity -->
+    <string name="user">Usuario</string>
+    <string name="save_account">Guardar cuenta</string>
+    <!-- Validations -->
+    <string name="required_user">El usuario es requerido.</string>
+
+</resources>

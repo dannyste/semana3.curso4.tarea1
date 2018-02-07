@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">20dp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+
+    <!-- ActionBar elevation. -->
+    <dimen name="actionbar_elevation">4dp</dimen>
+
+    <!-- fab margin. -->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- ImageView pet height -->
+    <dimen name="imageview_pet_height">350dp</dimen>
+
+    <!-- ImageView pet profile height -->
+    <dimen name="imageview_pet_profile_height">150dp</dimen>
+
+    <!-- TextView Text size. -->
+    <dimen name="textview_text_size">25sp</dimen>
+
+</resources>

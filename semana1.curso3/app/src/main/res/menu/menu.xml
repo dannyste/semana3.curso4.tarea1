@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mi_star"
+        android:icon="@mipmap/ic_star"
+        android:title="@string/favorite_pets"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mi_contact"
+        android:title="@string/contact"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/mi_about"
+        android:title="@string/about"
+        android:orderInCategory="101"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/mi_set_up_account"
+        android:title="@string/set_up_account"
+        android:orderInCategory="102"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/mi_receive_notifications"
+        android:title="@string/receive_notifications"
+        android:orderInCategory="103"
+        app:showAsAction="never" />
+
+</menu>
