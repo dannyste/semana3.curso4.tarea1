@@ -13,7 +13,10 @@ public class JsonKeys {
     public static final String MEDIA_LIKES                = "likes";
     public static final String MEDIA_LIKES_COUNT          = "count";
 
-    public static final String USER_USERNAME               = "username";
-    public static final String USER_PROFILE_PICTURE        = "profile_picture";
+    public static final String USER_USERNAME              = "username";
+    public static final String USER_PROFILE_PICTURE       = "profile_picture";
+
+    public static final String RESPONSE_META              = "meta";
+    public static final String CODE                       = "code";
 
 }

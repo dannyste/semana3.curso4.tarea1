@@ -50,7 +50,7 @@ public class PetProfileFragmentPresenter implements IPetProfileFragmentPresenter
 
             @Override
             public void onFailure(Call<PetProfileResponse> call, Throwable throwable) {
-                Toast.makeText(context, R.string.unexpected_error_occured, Toast.LENGTH_SHORT);
+                Toast.makeText(context, R.string.unexpected_error_occured, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -18,9 +18,13 @@ public class Constants {
 
     private static final String INSTAGRAM_KEY_GET_RECENT_MEDIA_USER_ID = "users/{user_id}/media/recent/?";
 
+    private static final String INSTAGRAM_KEY_POST_LIKES_MEDIA_ID = "media/{media-id}/likes/?";
+
     static final String INSTAGRAM_URL_GET_SEARCH_USER = INSTAGRAM_KEY_GET_SEARCH_USER;
 
     static final String INSTAGRAM_URL_GET_RECENT_MEDIA_USER_ID = INSTAGRAM_KEY_GET_RECENT_MEDIA_USER_ID + INSTAGRAM_KEY_ACCESS_TOKEN + INSTAGRAM_ACCESS_TOKEN;
+
+    static final String INSTAGRAM_URL_POST_LIKES_MEDIA_ID = INSTAGRAM_KEY_POST_LIKES_MEDIA_ID + INSTAGRAM_KEY_ACCESS_TOKEN + INSTAGRAM_ACCESS_TOKEN;
 
     /*
      *  SERVER
@@ -28,6 +32,10 @@ public class Constants {
 
     public static final String SERVER_ROOT_URL = "https://guarded-shore-98698.herokuapp.com/";
 
-    public static final String URL_POST_REGISTRAR_USUARIO = "registrar-usuario/";
+    public static final String SERVER_URL_POST_REGISTRAR_USUARIO = "registrar-usuario/";
+
+    public static final String SERVER_URL_POST_REGISTRAR_LIKE_FOTO = "registrar-like-foto/";
+
+    public static final String SERVER_URL_GET_LIKE_FOTO = "like-foto/{id}/{usuario_instagram}/";
 
 }

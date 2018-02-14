@@ -55,6 +55,8 @@ public class PetProfileDeserializer implements JsonDeserializer<PetProfileRespon
             String id               = userJson.get(JsonKeys.USER_ID).getAsString();
             String nombreCompleto   = userJson.get(JsonKeys.USER_FULLNAME).getAsString();
 
+            String idMedia = jsonObject.get(JsonKeys.USER_ID).getAsString();
+
             JsonObject imageJson            = jsonObject.getAsJsonObject(JsonKeys.MEDIA_IMAGES);
             JsonObject stdResolutionJson    = imageJson.getAsJsonObject(JsonKeys.MEDIA_STANDARD_RESOLUTION);
             String urlFoto                  = stdResolutionJson.get(JsonKeys.MEDIA_URL).getAsString();
@@ -65,6 +67,7 @@ public class PetProfileDeserializer implements JsonDeserializer<PetProfileRespon
             PetProfile petProfile = new PetProfile();
             petProfile.setId(id);
             petProfile.setName(nombreCompleto);
+            petProfile.setIdPhoto(idMedia);
             petProfile.setPhoto(urlFoto);
             petProfile.setRating(likes);
 

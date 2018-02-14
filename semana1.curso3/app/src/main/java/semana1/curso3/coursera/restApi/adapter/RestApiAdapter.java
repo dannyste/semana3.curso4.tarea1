@@ -7,8 +7,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import semana1.curso3.coursera.restApi.Constants;
 import semana1.curso3.coursera.restApi.Endpoints;
+import semana1.curso3.coursera.restApi.deserializer.LikeDeserializer;
 import semana1.curso3.coursera.restApi.deserializer.PetProfileDeserializer;
 import semana1.curso3.coursera.restApi.deserializer.UserDeserializer;
+import semana1.curso3.coursera.restApi.model.LikeResponse;
 import semana1.curso3.coursera.restApi.model.PetProfileResponse;
 
 public class RestApiAdapter {
@@ -34,6 +36,12 @@ public class RestApiAdapter {
     public Gson buildGsonDeserializerMediaRecent(){
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(PetProfileResponse.class, new PetProfileDeserializer());
+        return gsonBuilder.create();
+    }
+
+    public Gson buildGsonDeserializerLikeMedia(){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LikeResponse.class, new LikeDeserializer());
         return gsonBuilder.create();
     }
 
