@@ -29,7 +29,7 @@ public class SharedPreferencesManager {
     }
 
     public static String getIdDatabase(Context context) {
-        return getSharedPreferences(context).getString(ID_DATABASE, "-L5FCfINhKtUrIAN6kB5");
+        return getSharedPreferences(context).getString(ID_DATABASE, "");
     }
 
     public static void setIdDatabase(Context context, String value) {

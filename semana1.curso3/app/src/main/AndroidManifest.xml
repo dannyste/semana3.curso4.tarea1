@@ -43,14 +43,25 @@
         </activity>
         <activity android:name=".ContactActivity" />
         <activity android:name=".AboutActivity" />
-        <activity
-            android:name=".SetUpAccountActivity" />
-        <service
-            android:name=".firebase.MyFirebaseMessagingService">
+        <activity android:name=".SetUpAccountActivity" />
+        <activity android:name=".UserActivity" />
+
+        <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <service android:name=".firebase.NotificationIDTokenService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".broadcastReceiver.FollowUnfollowBroadcastReceiver">
+            <intent-filter>
+                <action android:name="FOLLOW_UNFOLLOW"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

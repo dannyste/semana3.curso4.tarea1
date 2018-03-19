@@ -26,6 +26,7 @@ import semana1.curso3.coursera.restApi.adapter.RestApiAdapter;
 import semana1.curso3.coursera.restApi.model.LikePhotoResponse;
 import semana1.curso3.coursera.restApi.model.LikeResponse;
 import semana1.curso3.coursera.restApi.model.UserResponse;
+import semana1.curso3.coursera.utils.Constants;
 import semana1.curso3.coursera.utils.SharedPreferencesManager;
 
 public class PetProfileAdapter extends RecyclerView.Adapter<PetProfileAdapter.PetProfileViewHolder> {
@@ -86,33 +87,15 @@ public class PetProfileAdapter extends RecyclerView.Adapter<PetProfileAdapter.Pe
     public void postRegistrarLikeFoto(PetProfile petProfile) {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establishConnectionRestApiServer();
-        Call<LikePhotoResponse> likePhotoResponseCall = endpoints.postRegistrarLikeFoto(FirebaseInstanceId.getInstance().getToken(), SharedPreferencesManager.getUserId(activity), petProfile.getIdPhoto());
+        Call<LikePhotoResponse> likePhotoResponseCall = endpoints.postRegistrarLikeFoto(FirebaseInstanceId.getInstance().getToken(), SharedPreferencesManager.getUserId(activity), petProfile.getIdPhoto(), Constants.USER_ID, Constants.USER);
         likePhotoResponseCall.enqueue(new Callback<LikePhotoResponse>() {
             @Override
             public void onResponse(Call<LikePhotoResponse> call, Response<LikePhotoResponse> response) {
                 LikePhotoResponse likePhotoResponse = response.body();
-                getLikeFoto();
             }
 
             @Override
             public void onFailure(Call<LikePhotoResponse> call, Throwable throwable) {
-                Toast.makeText(activity, R.string.unexpected_error_occured, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void getLikeFoto() {
-        RestApiAdapter restApiAdapter = new RestApiAdapter();
-        Endpoints endpoints = restApiAdapter.establishConnectionRestApiServer();
-        Call<UserResponse> userResponseCall = endpoints.getLikeFoto("-L5GZ8kMCydEg63g8BaF", "coursera.danny");
-        userResponseCall.enqueue(new Callback<UserResponse>() {
-            @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                UserResponse userResponse = response.body();
-            }
-
-            @Override
-            public void onFailure(Call<UserResponse> call, Throwable throwable) {
                 Toast.makeText(activity, R.string.unexpected_error_occured, Toast.LENGTH_SHORT).show();
             }
         });

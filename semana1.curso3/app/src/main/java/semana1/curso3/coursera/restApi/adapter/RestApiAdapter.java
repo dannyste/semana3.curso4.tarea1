@@ -9,9 +9,11 @@ import semana1.curso3.coursera.restApi.Constants;
 import semana1.curso3.coursera.restApi.Endpoints;
 import semana1.curso3.coursera.restApi.deserializer.LikeDeserializer;
 import semana1.curso3.coursera.restApi.deserializer.PetProfileDeserializer;
+import semana1.curso3.coursera.restApi.deserializer.RelationshipDeserializer;
 import semana1.curso3.coursera.restApi.deserializer.UserDeserializer;
 import semana1.curso3.coursera.restApi.model.LikeResponse;
 import semana1.curso3.coursera.restApi.model.PetProfileResponse;
+import semana1.curso3.coursera.restApi.model.RelationshipResponse;
 
 public class RestApiAdapter {
 
@@ -42,6 +44,12 @@ public class RestApiAdapter {
     public Gson buildGsonDeserializerLikeMedia(){
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LikeResponse.class, new LikeDeserializer());
+        return gsonBuilder.create();
+    }
+
+    public Gson buildGsonDeserializerRelationship(){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(RelationshipResponse.class, new RelationshipDeserializer());
         return gsonBuilder.create();
     }
 

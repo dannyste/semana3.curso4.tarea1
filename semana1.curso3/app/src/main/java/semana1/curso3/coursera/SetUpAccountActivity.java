@@ -64,6 +64,7 @@ public class SetUpAccountActivity extends AppCompatActivity {
                 PetProfileResponse petProfileResponse = response.body();
                 User user = petProfileResponse.getUser();
                 SharedPreferencesManager.setUserId(SetUpAccountActivity.this, user.getId());
+                SharedPreferencesManager.setUser(SetUpAccountActivity.this, user.getName());
                 goToMainActivity();
             }
 

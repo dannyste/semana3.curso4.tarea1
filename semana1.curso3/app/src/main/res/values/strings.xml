@@ -39,4 +39,9 @@
     <!-- Validations -->
     <string name="required_user">El usuario es requerido.</string>
 
+    <!-- Notifications -->
+    <string name="view_profile">Ver Perfil</string>
+    <string name="follow_unfollow">Follow/Unfollow</string>
+    <string name="view_user">Ver Usuario</string>
+
 </resources>
