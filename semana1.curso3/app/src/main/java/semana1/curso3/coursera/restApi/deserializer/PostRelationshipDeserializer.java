@@ -11,20 +11,20 @@ import java.lang.reflect.Type;
 
 import semana1.curso3.coursera.pojo.Relationship;
 import semana1.curso3.coursera.restApi.JsonKeys;
-import semana1.curso3.coursera.restApi.model.RelationshipResponse;
+import semana1.curso3.coursera.restApi.model.PostRelationshipResponse;
 
-public class RelationshipDeserializer implements JsonDeserializer<RelationshipResponse> {
+public class PostRelationshipDeserializer implements JsonDeserializer<PostRelationshipResponse> {
 
     @Override
-    public RelationshipResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public PostRelationshipResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         Gson gson = new Gson();
-        RelationshipResponse relationshipResponse = gson.fromJson(json, RelationshipResponse.class);
+        PostRelationshipResponse postRelationshipResponse = gson.fromJson(json, PostRelationshipResponse.class);
         JsonObject jsonObject = json.getAsJsonObject().getAsJsonObject(JsonKeys.RESPONSE_META);
-        relationshipResponse.setRelationship(deserializerRelationshipOfJson(jsonObject));
-        return relationshipResponse;
+        postRelationshipResponse.setRelationship(deserializerPostRelationshipOfJson(jsonObject));
+        return postRelationshipResponse;
     }
 
-    private Relationship deserializerRelationshipOfJson(JsonObject jsonObject){
+    private Relationship deserializerPostRelationshipOfJson(JsonObject jsonObject){
         Relationship relationship = new Relationship();
 
         int code = jsonObject.get(JsonKeys.CODE).getAsInt();

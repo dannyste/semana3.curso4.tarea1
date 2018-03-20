@@ -7,13 +7,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import semana1.curso3.coursera.restApi.Constants;
 import semana1.curso3.coursera.restApi.Endpoints;
+import semana1.curso3.coursera.restApi.deserializer.GetRelationshipDeserializer;
 import semana1.curso3.coursera.restApi.deserializer.LikeDeserializer;
 import semana1.curso3.coursera.restApi.deserializer.PetProfileDeserializer;
-import semana1.curso3.coursera.restApi.deserializer.RelationshipDeserializer;
+import semana1.curso3.coursera.restApi.deserializer.PostRelationshipDeserializer;
 import semana1.curso3.coursera.restApi.deserializer.UserDeserializer;
+import semana1.curso3.coursera.restApi.model.GetRelationshipResponse;
 import semana1.curso3.coursera.restApi.model.LikeResponse;
 import semana1.curso3.coursera.restApi.model.PetProfileResponse;
-import semana1.curso3.coursera.restApi.model.RelationshipResponse;
+import semana1.curso3.coursera.restApi.model.PostRelationshipResponse;
 
 public class RestApiAdapter {
 
@@ -47,9 +49,15 @@ public class RestApiAdapter {
         return gsonBuilder.create();
     }
 
-    public Gson buildGsonDeserializerRelationship(){
+    public Gson buildGsonDeserializerGetRelationship(){
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(RelationshipResponse.class, new RelationshipDeserializer());
+        gsonBuilder.registerTypeAdapter(GetRelationshipResponse.class, new GetRelationshipDeserializer());
+        return gsonBuilder.create();
+    }
+
+    public Gson buildGsonDeserializerPostRelationship(){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(PostRelationshipResponse.class, new PostRelationshipDeserializer());
         return gsonBuilder.create();
     }
 

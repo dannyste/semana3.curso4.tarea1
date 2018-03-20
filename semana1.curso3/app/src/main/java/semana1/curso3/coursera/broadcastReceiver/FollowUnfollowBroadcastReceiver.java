@@ -7,16 +7,14 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import semana1.curso3.coursera.R;
 import semana1.curso3.coursera.restApi.Endpoints;
 import semana1.curso3.coursera.restApi.adapter.RestApiAdapter;
-import semana1.curso3.coursera.restApi.model.RelationshipResponse;
+import semana1.curso3.coursera.restApi.model.GetRelationshipResponse;
+import semana1.curso3.coursera.restApi.model.PostRelationshipResponse;
 
 public class FollowUnfollowBroadcastReceiver extends BroadcastReceiver {
 
@@ -31,26 +29,51 @@ public class FollowUnfollowBroadcastReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         if (ACTION_KEY.equals(action)){
             id_usuario_notificacion = intent.getStringExtra("id_usuario_notificacion");
-            HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("action", "follow");
-            postRelationshipUser(hashMap);
+            getRelationshipUser();
         }
 
     }
 
-    private void postRelationshipUser(HashMap<String, String> hashMap) {
+    private void getRelationshipUser() {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
-        Gson gson = restApiAdapter.buildGsonDeserializerRelationship();
+        Gson gson = restApiAdapter.buildGsonDeserializerGetRelationship();
         Endpoints endpoints = restApiAdapter.establishConnectionRestApiInstagram(gson);
-        Call<RelationshipResponse> relationshipResponseCall = endpoints.postRelationshipUser(id_usuario_notificacion, hashMap);
-        relationshipResponseCall.enqueue(new Callback<RelationshipResponse>() {
+        Call<GetRelationshipResponse> getRelationshipResponseCall = endpoints.getRelationshipUser(id_usuario_notificacion);
+        getRelationshipResponseCall.enqueue(new Callback<GetRelationshipResponse>() {
             @Override
-            public void onResponse(Call<RelationshipResponse> call, Response<RelationshipResponse> response) {
-                RelationshipResponse relationshipResponse = response.body();
+            public void onResponse(Call<GetRelationshipResponse> call, Response<GetRelationshipResponse> response) {
+                GetRelationshipResponse getRelationshipResponse = response.body();
+                postRelationshipUser(getRelationshipResponse.getRelationship().getOutgoing_status().equalsIgnoreCase("none") ? "follow" : "unfollow");
             }
 
             @Override
-            public void onFailure(Call<RelationshipResponse> call, Throwable throwable) {
+            public void onFailure(Call<GetRelationshipResponse> call, Throwable throwable) {
+                Toast.makeText(context, R.string.unexpected_error_occured, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void postRelationshipUser(final String action) {
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Gson gson = restApiAdapter.buildGsonDeserializerPostRelationship();
+        Endpoints endpoints = restApiAdapter.establishConnectionRestApiInstagram(gson);
+        Call<PostRelationshipResponse> relationshipResponseCall = endpoints.postRelationshipUser(id_usuario_notificacion, action);
+        relationshipResponseCall.enqueue(new Callback<PostRelationshipResponse>() {
+            @Override
+            public void onResponse(Call<PostRelationshipResponse> call, Response<PostRelationshipResponse> response) {
+                PostRelationshipResponse postRelationshipResponse = response.body();
+                if (postRelationshipResponse.getRelationship().getCode() == 200) {
+                    if (action.equalsIgnoreCase("follow")) {
+                        Toast.makeText(context, "Siguiendo...", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(context, "Dejó de seguir", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostRelationshipResponse> call, Throwable throwable) {
                 Toast.makeText(context, R.string.unexpected_error_occured, Toast.LENGTH_SHORT).show();
             }
         });

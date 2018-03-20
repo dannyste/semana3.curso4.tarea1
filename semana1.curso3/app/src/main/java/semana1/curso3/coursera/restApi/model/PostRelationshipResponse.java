@@ -2,7 +2,7 @@ package semana1.curso3.coursera.restApi.model;
 
 import semana1.curso3.coursera.pojo.Relationship;
 
-public class RelationshipResponse {
+public class PostRelationshipResponse {
 
     private Relationship relationship;
 

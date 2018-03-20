@@ -19,4 +19,7 @@ public class JsonKeys {
     public static final String RESPONSE_META              = "meta";
     public static final String CODE                       = "code";
 
+    public static final String RESPONSE_DATA              = "data";
+    public static final String OUTGOING_STATUS            = "outgoing_status";
+
 }
